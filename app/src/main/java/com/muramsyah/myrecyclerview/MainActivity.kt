@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showRecyclerGrid() {
-        rvHeroes.layoutManager = GridLayoutManager(this, 2)
+        rvHeroes.layoutManager = GridLayoutManager(this, 1)
         val gridHeroAdapter = GridHeroAdapter(list)
         rvHeroes.adapter = gridHeroAdapter
 
@@ -56,6 +56,12 @@ class MainActivity : AppCompatActivity() {
         rvHeroes.layoutManager = LinearLayoutManager(this)
         val cardViewHeroAdapter = CardViewHeroAdapter(list)
         rvHeroes.adapter = cardViewHeroAdapter
+    }
+
+    private fun showRecyclerStaggered() {
+        rvHeroes.layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+        val staggeredAdapter = StaggeredAdapter(list)
+        rvHeroes.adapter = staggeredAdapter
     }
 
     private fun showSelectedHero(hero: Hero) {
@@ -87,6 +93,11 @@ class MainActivity : AppCompatActivity() {
             R.id.action_cardView -> {
                 title = "Mode CardView"
                 showRecyclerCardView()
+            }
+
+            R.id.action_stiggered -> {
+                title = "Mode Staggered"
+                showRecyclerStaggered()
             }
         }
         setActionBarTitle(title)

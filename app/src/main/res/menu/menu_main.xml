@@ -16,4 +16,9 @@
         android:id="@+id/action_cardView"
         android:title="@string/with_cardview"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_stiggered"
+        android:title="@string/staggered"
+        app:showAsAction="never" />
 </menu>
