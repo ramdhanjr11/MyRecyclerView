@@ -12,6 +12,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var rvHeroes: RecyclerView
     private var list: ArrayList<Hero> = arrayListOf()
 
+    private var title: String = "Mode List"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -35,6 +37,12 @@ class MainActivity : AppCompatActivity() {
         rvHeroes.adapter = gridHeroAdapter
     }
 
+    private fun showRecyclerCardView() {
+        rvHeroes.layoutManager = LinearLayoutManager(this)
+        val cardViewHeroAdapter = CardViewHeroAdapter(list)
+        rvHeroes.adapter = cardViewHeroAdapter
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
@@ -48,16 +56,24 @@ class MainActivity : AppCompatActivity() {
     private fun setMode(selectedMode: Int) {
         when (selectedMode) {
             R.id.action_list -> {
+                title = "Mode List"
                 showRecyclerList()
             }
 
             R.id.action_grid -> {
+                title = "Mode Grid"
                 showRecyclerGrid()
             }
 
             R.id.action_cardView -> {
-
+                title = "Mode CardView"
+                showRecyclerCardView()
             }
         }
+        setActionBarTitle(title)
+    }
+
+    private fun setActionBarTitle(title: String) {
+        supportActionBar?.title = title
     }
 }
