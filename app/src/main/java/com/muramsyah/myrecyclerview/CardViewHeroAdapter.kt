@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -31,6 +32,14 @@ class CardViewHeroAdapter(private val listHero: ArrayList<Hero>) : RecyclerView.
 
         holder.tvName.text = hero.name
         holder.tvDetail.text = hero.detail
+
+        holder.btnFavorite.setOnClickListener{
+            Toast.makeText(holder.itemView.context, "Favorite ${listHero[position].name}", Toast.LENGTH_SHORT).show()
+        }
+
+        holder.btnShare.setOnClickListener{
+            Toast.makeText(holder.itemView.context, "Share ${listHero[position].name}", Toast.LENGTH_SHORT).show()
+        }
     }
 
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
